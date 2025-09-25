@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <input type="text" placeholder="Usuario" />
+  <ion-input type="password" label="Password" [(ngModel)]="password">
+    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+  </ion-input>
+
+  <h1 class="font-bold underline">Hello world!</h1>
+
+  <ion-button (click)="login()">Ingresar</ion-button>
+
+  <button class="mt-2 p-10 bg-white m-2 text-2xl">Test</button>
+</ion-content>
