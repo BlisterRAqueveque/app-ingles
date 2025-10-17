@@ -31,7 +31,7 @@ Cada tipo corresponde a un **componente Angular** configurable desde datos exter
 
 src/app/
 │
-├── components/
+├── shared/
 │   ├── match-exercise/
 │   ├── sequence-exercise/
 │   ├── labeling-exercise/
