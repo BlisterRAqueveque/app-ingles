@@ -9,6 +9,7 @@ import { MatchExerciseComponent } from './match-exercise/match-exercise.componen
 import { SequenceExerciseComponent } from './sequence-exercise/sequence-exercise.component';
 import { SpeakingExerciseComponent } from './speaking-exercise/speaking-exercise.component';
 import { WordGameComponent } from './word-game/word-game.component';
+import { CrosswordComponent } from './crossword/crossword.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { WordGameComponent } from './word-game/word-game.component';
     SequenceExerciseComponent,
     SpeakingExerciseComponent,
     WordGameComponent,
+    CrosswordComponent
   ],
   imports: [CommonModule],
   exports: [
@@ -33,6 +35,7 @@ import { WordGameComponent } from './word-game/word-game.component';
     SequenceExerciseComponent,
     SpeakingExerciseComponent,
     WordGameComponent,
+    CrosswordComponent
   ],
 })
 export class SharedModule {}

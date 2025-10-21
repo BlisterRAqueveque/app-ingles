@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-crossword',
   templateUrl: './crossword.component.html',
   styleUrls: ['./crossword.component.scss'],
