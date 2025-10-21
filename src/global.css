@@ -38,3 +38,59 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* === Regular === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* === Bold === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* === Italic === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-RegularItalic.otf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* === Bold Italic === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-BoldItalic.otf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* === Black === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-Black.otf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* === Black Italic === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-BlackItalic.otf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* === Light === */
+@font-face {
+  font-family: 'Nexa';
+  src: url('Nexa-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
