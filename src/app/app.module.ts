@@ -15,12 +15,16 @@ import { providePrimeNG } from 'primeng/config';
 //! Si esto no funciona, cambiar por esto: export  * as default from '@primeng/themes/aura'; en la librería node_modules\@primeng\themes\aura\index.d.ts
 import Aura from '@primeng/themes/aura';
 
+// Importación de "sharedModule" para acceder a los componentes
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios', hardwareBackButton: true }),
     AppRoutingModule,
+    SharedModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -35,4 +39,4 @@ import Aura from '@primeng/themes/aura';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
