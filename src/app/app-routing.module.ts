@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SpeakingExerciseComponent } from './shared/speaking-exercise/speaking-exercise.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/login/login.module').then((m) => m.LoginPageModule),
   },
+  // Ejercicios
+  {
+    path: 'speaking-exercise', component: SpeakingExerciseComponent
+  }
 ];
 
 @NgModule({
