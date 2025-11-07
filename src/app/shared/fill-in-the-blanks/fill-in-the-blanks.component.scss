@@ -1,0 +1,110 @@
+.fill-in-blanks {
+  --background: linear-gradient(180deg, #e8f6ff 0%, #f5fff0 100%);
+  --padding-bottom: 80px;
+}
+
+.intro-card {
+  background: white;
+  border-left: 6px solid #007cff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  ion-card-title {
+    font-weight: 700;
+    color: #007cff;
+  }
+
+  ion-card-subtitle {
+    color: #555;
+  }
+
+  ion-card-content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+}
+
+.ejercicio-card {
+  --ion-card-background: #ffffff;
+  border-left: 6px solid #008900;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  ion-card-title {
+    font-weight: 600;
+    color: #008900;
+  }
+}
+
+.texto-ejercicio {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  span {
+    margin-right: 4px;
+  }
+
+  .blank-item {
+    display: inline-block;
+    width: auto;
+    min-width: 80px;
+    max-width: 180px;
+    margin: 0 0.2em;
+    vertical-align: baseline;
+
+    --inner-padding-end: 4px;
+    --inner-padding-start: 4px;
+    --padding-top: 0;
+    --padding-bottom: 2px;
+    --border-width: 0;
+    --highlight-height: 0;
+
+    ion-input,
+    ion-select {
+      border-bottom: 2px dashed #007cff;
+      text-align: center;
+      font-size: 1rem;
+      padding-bottom: 2px;
+    }
+
+    &:focus-within ion-input,
+    &:focus-within ion-select {
+      border-bottom: 2px solid #008900;
+    }
+
+    ::ng-deep .input-placeholder,
+    ::ng-deep .select-placeholder {
+      color: var(--ion-color-medium);
+      font-style: italic;
+    }
+
+    ::ng-deep .select-icon {
+      display: none;
+    }
+  }
+}
+
+ion-footer {
+  background: transparent;
+
+  ion-button {
+    min-width: 120px;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 124, 255, 0.2);
+    color: #008900;
+  }
+
+  ion-button[color='success'] {
+    --border-color: #008900;
+    color: #008900;
+  }
+
+  ion-button[color='primary'] {
+    --background: #007cff;
+    --background-activated: #0067db;
+  }
+}

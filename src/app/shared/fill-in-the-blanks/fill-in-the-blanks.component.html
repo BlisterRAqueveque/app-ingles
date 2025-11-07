@@ -1,3 +1,50 @@
-<p>
-  fill-in-the-blanks works!
-</p>
+<ion-content class="ion-padding fill-in-blanks">
+    <ion-card class="intro-card">
+        <ion-card-header>
+            <ion-card-title>{{ config.titulo || 'Completar el texto' }}</ion-card-title>
+            <ion-card-subtitle>Nivel: {{ config.nivel }} | Tema: {{ config.tema }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <p>{{ config.instrucciones }}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <div *ngFor="let segmentos of segmentosPorEjercicio; let i = index">
+        <ion-card class="ejercicio-card ion-margin-bottom">
+            <ion-card-header>
+                <ion-card-title>Ejercicio {{ i + 1 }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <div class="texto-ejercicio">
+                    <ng-container *ngFor="let seg of segmentos">
+                        <ng-container [ngSwitch]="seg.tipo">
+                            <span *ngSwitchCase="'texto'">{{ seg.contenido }}</span>
+
+                            <ng-container *ngSwitchCase="'blank'">
+                                <ion-item *ngIf="seg.blank?.opciones?.length; else inputBlank" class="blank-item">
+                                    <ion-select interface="popover" placeholder="Seleccionar..." class="blank-select">
+                                        <ion-select-option *ngFor="let op of seg.blank?.opciones" [value]="op">
+                                            {{ op }}
+                                        </ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+
+                                <ng-template #inputBlank>
+                                    <ion-item class="blank-item">
+                                        <ion-input placeholder="Completar..." clear-input="true"
+                                            class="blank-input"></ion-input>
+                                    </ion-item>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-footer class="ion-text-center ion-padding">
+        <ion-button color="success" fill="outline" class="ion-margin-end">Reiniciar</ion-button>
+        <ion-button color="primary">Enviar</ion-button>
+    </ion-footer>
+</ion-content>
