@@ -1,3 +1,79 @@
-<p>
-  crossword works!
-</p>
+<div class="unir-flechas-container">
+    <h2>Actividad Unir Con Flechas</h2>
+
+    <div *ngIf="!esAlumno" class="vista-profesor">
+        <h3>Vista Profesor: Actividad Unir con Flechas</h3>
+
+        <div *ngFor="let par of paresEdicion; let i = index" class="form-par">
+            <input [(ngModel)]="par.itemA" placeholder="Ítem A (Ej: Hola)">
+            <input [(ngModel)]="par.itemB" placeholder="Ítem B (Ej: Hello)">
+
+            <button (click)="paresEdicion.splice(i, 1)" class="btn-quitar" *ngIf="paresEdicion.length > 1">➖</button>
+        </div>
+
+        <button (click)="agregarPar()" class="btn-agregar">➕ Agregar Nuevo Par</button>
+
+        <hr>
+        <button (click)="guardarActividad()" class="btn-guardar">💾 Guardar Actividad</button>
+
+        <div *ngIf="actividadGuardada.length > 0">
+            <hr>
+            <h4>Opciones de Prueba</h4>
+            <button (click)="rolUsuario = 'alumno'; esAlumno = true; cargarJuego()">
+                ▶️ Probar como Alumno
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="esAlumno" class="vista-alumno">
+        <h3>Vista Alumno: Unir con flechas</h3>
+
+        <div class="columnas-juego">
+            <div class="columna columna-a">
+                <h4>Columna A</h4>
+                <div *ngFor="let item of elementosColumnaA" class="item-par">
+                    <span>{{ item.texto }}</span>
+                    <div
+                        [id]="'punto-' + item.id"
+                        class="punto-conexion a"
+                        [class.seleccionado]="puntoSeleccionadoId === item.id"
+                        (click)="manejarClickPunto(item.id, 'A')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="columna columna-b">
+                <h4>Columna B</h4>
+                <div *ngFor="let item of elementosColumnaB" class="item-par">
+                    <div
+                        [id]="'punto-' + item.id"
+                        class="punto-conexion b"
+                        (click)="manejarClickPunto(item.id, 'B')">
+                    </div>
+                    <span>{{ item.texto }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="acciones">
+             <button *ngIf="!juegoFinalizado" (click)="enviarRespuestas()">Enviar Respuestas</button>
+             <div *ngIf="juegoFinalizado" class="feedback-final">
+                 <p>¡Actividad finalizada! Revisa tus resultados.</p>
+             </div>
+        </div>
+    </div>
+
+    <svg class="canvas-flechas">
+        <ng-container *ngFor="let conexion of conexionesAlumno">
+            <svg:line *ngIf="getCoordenadasFlecha(conexion) as coords"
+                [attr.x1]="coords.x1"
+                [attr.y1]="coords.y1"
+                [attr.x2]="coords.x2"
+                [attr.y2]="coords.y2"
+                [class.correcta]="conexion.esCorrecta === true"
+                [class.incorrecta]="conexion.esCorrecta === false"
+                class="linea-conexion"
+            />
+        </ng-container>
+    </svg>
+</div>

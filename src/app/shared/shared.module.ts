@@ -10,6 +10,7 @@ import { SequenceExerciseComponent } from './sequence-exercise/sequence-exercise
 import { SpeakingExerciseComponent } from './speaking-exercise/speaking-exercise.component';
 import { WordGameComponent } from './word-game/word-game.component';
 import { CrosswordComponent } from './crossword/crossword.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CrosswordComponent } from './crossword/crossword.component';
     WordGameComponent,
     CrosswordComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     BingoComponent,
     DrawWriteComponent,
@@ -35,6 +36,7 @@ import { CrosswordComponent } from './crossword/crossword.component';
     SequenceExerciseComponent,
     SpeakingExerciseComponent,
     WordGameComponent,
+    FormsModule,
     CrosswordComponent
   ],
 })
