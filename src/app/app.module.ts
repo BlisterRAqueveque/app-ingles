@@ -14,6 +14,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 //! Si esto no funciona, cambiar por esto: export  * as default from '@primeng/themes/aura'; en la librería node_modules\@primeng\themes\aura\index.d.ts
 import Aura from '@primeng/themes/aura';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import Aura from '@primeng/themes/aura';
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios', hardwareBackButton: true }),
     AppRoutingModule,
+    SharedModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

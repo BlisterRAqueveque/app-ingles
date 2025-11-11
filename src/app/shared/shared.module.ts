@@ -10,6 +10,7 @@ import { SequenceExerciseComponent } from './sequence-exercise/sequence-exercise
 import { SpeakingExerciseComponent } from './speaking-exercise/speaking-exercise.component';
 import { WordGameComponent } from './word-game/word-game.component';
 import { CrosswordComponent } from './crossword/crossword.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CrosswordComponent } from './crossword/crossword.component';
     WordGameComponent,
     CrosswordComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, IonicModule],
   exports: [
     BingoComponent,
     DrawWriteComponent,
@@ -35,7 +36,8 @@ import { CrosswordComponent } from './crossword/crossword.component';
     SequenceExerciseComponent,
     SpeakingExerciseComponent,
     WordGameComponent,
-    CrosswordComponent
+    CrosswordComponent,
+    IonicModule
   ],
 })
 export class SharedModule {}
