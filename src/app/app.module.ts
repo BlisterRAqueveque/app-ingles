@@ -16,6 +16,9 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { SharedModule } from './shared/shared.module';
 
+// Importación de "sharedModule" para acceder a los componentes
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -37,4 +40,4 @@ import { SharedModule } from './shared/shared.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

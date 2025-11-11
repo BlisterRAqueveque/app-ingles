@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './speaking-exercise.component.html',
   styleUrls: ['./speaking-exercise.component.scss'],
 })
-export class SpeakingExerciseComponent  implements OnInit {
+export class SpeakingExerciseComponent implements OnInit {
+  /* Propiedad para manejar barra de grabación */
+  public progress = 0;
 
-  constructor() { }
+  constructor() {
+    /* Barra de grabación */
+    setInterval(() => {
+      this.progress += 0.01;
 
-  ngOnInit() {}
+      // Al llegar al 100% la barra vuelve al inicio
+      if (this.progress > 1) {
+        setTimeout(() => {
+          this.progress = 0;
+        }, 1000);
+      }
+    }, 50);
+  }
 
+  ngOnInit() { }
+
+  /* !test */
+  speak() {
+    console.log("test");
+  }
 }

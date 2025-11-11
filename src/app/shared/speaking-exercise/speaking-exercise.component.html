@@ -1,3 +1,39 @@
-<p>
-  speaking-exercise works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">Speaking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="medium">Speaking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="introduction-speak">
+    <h2>Speake the sentence into the microphone.</h2>
+    <h2>Diga la sentencia en el micrófono.</h2>
+  </div>
+
+  <ion-card class="card-speak">
+    <ion-card-content class="content-speak">
+      <div class="sentence-speak mb-2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore distinctio, culpa corporis illum cupiditate
+        doloribus nesciunt nisi.
+      </div>
+
+      <div class="action-speak mb-6">
+        <ion-icon name="mic-circle-outline" class="icon-speak" (click)="speak()"></ion-icon>
+
+        <!-- Por defecto aún -->
+        <ion-progress-bar [value]="progress" class="bar-progress-speak"></ion-progress-bar>
+      </div>
+
+      <div class="btn-speak">
+        <ion-button class="btn btn-primary">Continue</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

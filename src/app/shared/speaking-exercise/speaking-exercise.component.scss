@@ -1,0 +1,97 @@
+.introduction-speak h2 {
+    text-align: center;
+}
+
+.sentence-speak {
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    color: black;
+    background-color: #CCE2FF;
+}
+
+.action-speak {
+    text-align: center;
+}
+
+.icon-speak {
+    font-size: 5rem;
+    margin: 1rem;
+    color: #006CFF;
+}
+
+.icon-speak:hover {
+    cursor: pointer;
+    animation-name: sizeIcon;
+    animation-duration: 15s;
+}
+
+.bar-progress-speak {
+    height: 2rem;
+}
+
+.btn-speak {
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+}
+
+/* ANIMACIONES */
+/* Por ahora lo manejo así, la idea es manejarlo como loop y que pare cuando se deje de grabar */
+@keyframes sizeIcon {
+    0% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+    }
+
+    10% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.3);
+    }
+
+    20% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.1);
+    }
+
+    30% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.3);
+    }
+
+    40% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.1);
+    }
+
+    50% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.3);
+    }
+
+    60% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.1);
+    }
+
+    70% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.3);
+    }
+
+    80% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.1);
+    }
+
+    90% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.3);
+    }
+
+    100% {
+        transition: background-color 1s ease-out, transform 1s ease-out;
+        transform: scale(1.0);
+    }
+}

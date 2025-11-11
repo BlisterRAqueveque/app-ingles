@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { FillInTheBlanksComponent } from './shared/fill-in-the-blanks/fill-in-the-blanks.component';
+import { SpeakingExerciseComponent } from './shared/speaking-exercise/speaking-exercise.component';
 
 const routes: Routes = [
   {
@@ -15,8 +15,16 @@ const routes: Routes = [
   },
   {
     path: 'completar-texto',
-    loadChildren: () => import('./modules/actividades/fill-in-the-blanks/fill-in-the-blanks.module').then((m) => m.FillInTheBlanksModule)
-  }
+    loadChildren: () =>
+      import(
+        './modules/actividades/fill-in-the-blanks/fill-in-the-blanks.module'
+      ).then((m) => m.FillInTheBlanksModule),
+  },
+  // Ejercicios
+  {
+    path: 'speaking-exercise',
+    component: SpeakingExerciseComponent,
+  },
 ];
 
 @NgModule({

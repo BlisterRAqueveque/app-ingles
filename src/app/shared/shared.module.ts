@@ -23,7 +23,7 @@ import { IonicModule } from '@ionic/angular';
     SequenceExerciseComponent,
     SpeakingExerciseComponent,
     WordGameComponent,
-    CrosswordComponent
+    CrosswordComponent,
   ],
   imports: [CommonModule, IonicModule],
   exports: [
@@ -37,7 +37,7 @@ import { IonicModule } from '@ionic/angular';
     SpeakingExerciseComponent,
     WordGameComponent,
     CrosswordComponent,
-    IonicModule
+    IonicModule,
   ],
 })
 export class SharedModule {}
