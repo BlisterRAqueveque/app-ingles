@@ -1,28 +1,56 @@
-<ion-content class="ion-padding fill-in-blanks">
-    <ion-card class="intro-card">
-        <ion-card-header>
-            <ion-card-title>{{ config.titulo || 'Completar el texto' }}</ion-card-title>
-            <ion-card-subtitle>Nivel: {{ config.nivel }} | Tema: {{ config.tema }}</ion-card-subtitle>
+<div class="ion-padding bg-gray-50 dark:bg-gray-900 pb-32 min-h-screen">
+    <ion-card class="bg-white dark:bg-gray-800 rounded-3xl shadow-lg mb-8 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-xl">
+        <ion-card-header class="p-6">
+            <div class="flex flex-wrap items-center gap-3 mb-5">
+                <span class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <ion-icon name="stats-chart" class="mr-2 text-[#006cff] text-base"></ion-icon>
+                    {{ config.nivel }}
+                </span>
+                <span class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <ion-icon name="library" class="mr-2 text-[#008900] text-base"></ion-icon>
+                    {{ config.tema }}
+                </span>
+            </div>
+
+            <ion-card-title class="font-black text-2xl md:text-3xl text-gray-900 dark:text-gray-100 mb-4 leading-tight">
+                {{ config.titulo || 'Completar el Texto' }}
+            </ion-card-title>
+
+            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 border-l-4 border-[#006cff]">
+                <p class="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                    {{ config.instrucciones }}
+                </p>
+            </div>
         </ion-card-header>
-        <ion-card-content>
-            <p>{{ config.instrucciones }}</p>
-        </ion-card-content>
     </ion-card>
 
-    <div *ngFor="let segmentos of segmentosPorEjercicio; let i = index">
-        <ion-card class="ejercicio-card ion-margin-bottom">
-            <ion-card-header>
-                <ion-card-title>Ejercicio {{ i + 1 }}</ion-card-title>
+    <!-- EJERCICIOS -->
+    <div class="space-y-8">
+        <ion-card *ngFor="let segmentos of segmentosPorEjercicio; let i = index"
+            class="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+            <ion-card-header class="p-5 border-b border-gray-200 dark:border-gray-700">
+                <ion-card-title class="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                    <ion-icon name="document-text" class="mr-2 text-[#006cff] text-xl"></ion-icon>
+                    Ejercicio {{ i + 1 }}
+                </ion-card-title>
             </ion-card-header>
-            <ion-card-content>
-                <div class="texto-ejercicio">
-                    <ng-container *ngFor="let seg of segmentos">
+
+            <ion-card-content class="p-6">
+                <div
+                    class="text-base leading-relaxed text-gray-900 dark:text-gray-100 flex flex-wrap gap-x-1.5 gap-y-3 items-center">
+                    <ng-container *ngFor="let seg of segmentos; let j = index">
                         <ng-container [ngSwitch]="seg.tipo">
-                            <span *ngSwitchCase="'texto'">{{ seg.contenido }}</span>
+                            <span *ngSwitchCase="'texto'" class="whitespace-normal">{{ seg.contenido }}</span>
 
                             <ng-container *ngSwitchCase="'blank'">
-                                <ion-item *ngIf="seg.blank?.opciones?.length; else inputBlank" class="blank-item">
-                                    <ion-select interface="popover" placeholder="Seleccionar..." class="blank-select">
+                                <!-- select con opciones -->
+                                <ion-item *ngIf="seg.blank?.opciones?.length; else inputBlank" lines="none" class="inline-flex items-center align-middle min-w-[120px] max-w-xs p-0 m-0 
+                         bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 
+                         rounded-lg border border-gray-300 dark:border-gray-600
+                         focus-within:border-[#006cff] focus-within:ring-1 focus-within:ring-[#006cff]
+                         transition duration-150">
+                                    <ion-select interface="popover" placeholder="Seleccionar..."
+                                        class="text-center text-sm font-medium w-full capitalize text-gray-900 dark:text-gray-100">
                                         <ion-select-option *ngFor="let op of seg.blank?.opciones" [value]="op">
                                             {{ op }}
                                         </ion-select-option>
@@ -30,9 +58,14 @@
                                 </ion-item>
 
                                 <ng-template #inputBlank>
-                                    <ion-item class="blank-item">
-                                        <ion-input placeholder="Completar..." clear-input="true"
-                                            class="blank-input"></ion-input>
+                                    <ion-item lines="none" class="inline-flex items-center align-middle min-w-[120px] max-w-xs p-0 m-0 
+                           bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 
+                           rounded-lg border border-gray-300 dark:border-gray-600
+                           focus-within:border-[#008900] focus-within:ring-1 focus-within:ring-[#008900]
+                           transition duration-150">
+                                        <ion-input placeholder="Escribe aquí..." clear-input="true"
+                                            class="text-center text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        </ion-input>
                                     </ion-item>
                                 </ng-template>
                             </ng-container>
@@ -43,8 +76,20 @@
         </ion-card>
     </div>
 
-    <ion-footer class="ion-text-center ion-padding">
-        <ion-button color="success" fill="outline" class="ion-margin-end">Reiniciar</ion-button>
-        <ion-button color="primary">Enviar</ion-button>
-    </ion-footer>
-</ion-content>
+    <!-- BOTONES-->
+    <div
+        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4 shadow-2xl z-20">
+        <div class="flex justify-center gap-6 max-w-3xl mx-auto">
+            <ion-button color="medium" class="min-w-[140px] font-semibold rounded-full text-sm border border-gray-400 transition transform hover:scale-105">
+                <ion-icon slot="start" name="refresh-outline"></ion-icon>
+                Reiniciar
+            </ion-button>
+
+            <ion-button class="min-w-[140px] font-semibold rounded-full text-sm shadow-md transition transform hover:scale-105 bg-[#008900] hover:bg-green-700 text-white"
+                size="default">
+                <ion-icon slot="start" name="send-outline"></ion-icon>
+                Enviar
+            </ion-button>
+        </div>
+    </div>
+</div>
