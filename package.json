@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^19.2.15",
     "@angular/platform-browser-dynamic": "^19.2.15",
     "@angular/router": "^19.2.15",
+    "@capacitor/core": "^7.4.4",
     "@capacitor/preferences": "^7.0.2",
     "@ionic/angular": "^8.0.0",
     "@primeng/themes": "^20.1.2",
