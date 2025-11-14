@@ -11,6 +11,7 @@ import { SpeakingExerciseComponent } from './speaking-exercise/speaking-exercise
 import { WordGameComponent } from './word-game/word-game.component';
 import { CrosswordComponent } from './crossword/crossword.component';
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { IonicModule } from '@ionic/angular';
     WordGameComponent,
     CrosswordComponent,
   ],
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, FormsModule],
   exports: [
     BingoComponent,
     DrawWriteComponent,
@@ -38,6 +39,8 @@ import { IonicModule } from '@ionic/angular';
     WordGameComponent,
     CrosswordComponent,
     IonicModule,
+    FormsModule,
+    CrosswordComponent,
   ],
 })
 export class SharedModule {}

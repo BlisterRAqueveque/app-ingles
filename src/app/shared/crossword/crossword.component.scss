@@ -1,0 +1,254 @@
+/* ----------------------------------- */
+/* 1. TIPOGRAFÍA Y VARIABLES DE COLOR */
+/* ----------------------------------- */
+
+/* Carga de Fuentes Nexa con tu ruta y formato OTF */
+@font-face {
+    font-family: 'Nexa';
+    src: url('../../../assets/fonts/Nexa-Bold.otf') format('opentype'); /* Usar 'opentype' o 'truetype' para OTF */
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Nexa';
+    src: url('../../../assets/fonts/Nexa-Regular.otf') format('opentype'); /* Usar 'opentype' o 'truetype' para OTF */
+    font-weight: normal;
+}
+
+$color-primary-green: #00B900;
+$color-primary-blue: #0D6CFF;
+$color-negro: #1E1E1E;
+$color-success: $color-primary-green;
+$color-error: #DC3545;
+$color-light-gray: #F0F0F0;
+$color-border-gray: #E0E0E0;
+$breakpoint-mobile: 768px; /* Punto de quiebre para dispositivos móviles/tablet */
+
+
+.unir-flechas-container {
+    font-family: 'Nexa', sans-serif;
+    color: $color-negro;
+    position: relative;
+    padding: 30px;
+    border: 1px solid $color-border-gray;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    min-height: 500px;
+}
+
+h2, h3, h4 {
+    font-family: 'Nexa', sans-serif;
+    font-weight: bold;
+    color: $color-negro;
+}
+
+
+/* --- ESTILOS PROFESOR (CREACIÓN) --- */
+.form-par {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    align-items: center;
+
+    input {
+        padding: 10px 12px;
+        border: 1px solid $color-border-gray;
+        border-radius: 6px;
+        flex-grow: 1;
+        font-family: 'Nexa', sans-serif;
+    }
+
+    .btn-quitar {
+        background: $color-error;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-weight: bold;
+        line-height: 1;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.btn-agregar, .btn-guardar {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.btn-agregar {
+    background: $color-primary-blue;
+    &:hover { background: darken($color-primary-blue, 10%); }
+}
+
+.btn-guardar {
+    background: $color-primary-green;
+    &:hover { background: darken($color-primary-green, 10%); }
+}
+
+
+/* --- ESTILOS ALUMNO (JUEGO - BASE WEB) --- */
+
+/* WEB/Desktop: Columnas lado a lado */
+.columnas-juego {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.columna {
+    width: 45%; /* Ancho en desktop */
+
+    h4 {
+        color: $color-primary-blue;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid $color-light-gray;
+    }
+
+    .item-par {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid $color-border-gray;
+        border-radius: 8px;
+        background-color: $color-light-gray;
+        font-weight: normal;
+    }
+}
+.columna-b .item-par {
+    justify-content: flex-start; /* Alinea los ítems de la columna B a la izquierda */
+}
+
+.punto-conexion {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: $color-primary-blue;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        background-color: darken($color-primary-blue, 10%);
+    }
+
+    &.seleccionado {
+        background-color: #ffc107;
+        box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.5);
+    }
+}
+
+
+/* --- ESTILOS SVG Y LÍNEAS --- */
+.canvas-flechas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.linea-conexion {
+    stroke: $color-primary-blue;
+    stroke-width: 3;
+    transition: stroke 0.3s;
+
+    &.correcta {
+        stroke: $color-success;
+    }
+    &.incorrecta {
+        stroke: $color-error;
+        stroke-dasharray: 5 5;
+    }
+}
+
+.acciones button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background: $color-primary-green;
+    color: white;
+    display: block;
+    width: 100%;
+}
+
+
+/* ----------------------------------- */
+/* 2. RESPONSIVE DESIGN (MOBILE) */
+/* ----------------------------------- */
+
+@media (max-width: $breakpoint-mobile) {
+
+    .unir-flechas-container {
+        padding: 15px;
+    }
+
+    /* Vista Profesor: Inputs apilados */
+    .form-par {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        position: relative; /* Para posicionar el botón quitar */
+
+        .btn-quitar {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    /* Vista Alumno: Columnas apiladas verticalmente */
+    .columnas-juego {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .columna {
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    /* Redistribuir los puntos para que la columna A y B se vean uniformes */
+    /* Columna A: Texto (izq) - Punto (der) */
+    .columna-a .item-par {
+        justify-content: space-between;
+
+        .punto-conexion {
+            order: 2;
+        }
+        span {
+            order: 1;
+        }
+    }
+
+    /* Columna B: Punto (izq) - Texto (der) */
+    .columna-b .item-par {
+        justify-content: space-between; /* Usar space-between para centrar los puntos */
+
+        .punto-conexion {
+            order: 1;
+        }
+        span {
+            order: 2;
+            flex-grow: 1; /* Permitir que el texto ocupe espacio restante */
+        }
+    }
+}
