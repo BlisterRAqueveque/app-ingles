@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SpeakingExerciseComponent } from './shared/speaking-exercise/speaking-exercise.component';
+import { MatchExerciseComponent } from './shared/match-exercise/match-exercise.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'speaking-exercise',
     component: SpeakingExerciseComponent,
+  },
+  {
+    path: 'flashcards-exercise', 
+    component: MatchExerciseComponent, 
   },
 ];
 
