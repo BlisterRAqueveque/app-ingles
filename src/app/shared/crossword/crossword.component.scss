@@ -1,254 +1,283 @@
-/* ----------------------------------- */
-/* 1. TIPOGRAFÍA Y VARIABLES DE COLOR */
-/* ----------------------------------- */
-
-/* Carga de Fuentes Nexa con tu ruta y formato OTF */
-@font-face {
-    font-family: 'Nexa';
-    src: url('../../../assets/fonts/Nexa-Bold.otf') format('opentype'); /* Usar 'opentype' o 'truetype' para OTF */
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'Nexa';
-    src: url('../../../assets/fonts/Nexa-Regular.otf') format('opentype'); /* Usar 'opentype' o 'truetype' para OTF */
-    font-weight: normal;
+.titulo {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  color: var(--ion-color-primary);
+  margin-bottom: 20px;
+  margin-top: 25px;
 }
 
-$color-primary-green: #00B900;
-$color-primary-blue: #0D6CFF;
-$color-negro: #1E1E1E;
-$color-success: $color-primary-green;
-$color-error: #DC3545;
-$color-light-gray: #F0F0F0;
-$color-border-gray: #E0E0E0;
-$breakpoint-mobile: 768px; /* Punto de quiebre para dispositivos móviles/tablet */
-
-
-.unir-flechas-container {
-    font-family: 'Nexa', sans-serif;
-    color: $color-negro;
-    position: relative;
-    padding: 30px;
-    border: 1px solid $color-border-gray;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    min-height: 500px;
+.subtitulo {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+  border-bottom: 1px solid var(--ion-color-medium);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  color:rgb(30, 57, 207);
+}
+.instruciones {
+  font-size: 1.1em;
+  font-weight: 400;
+  font-style: italic;
+  color: rgb(46, 44, 44);
+  margin-bottom: 12px;
 }
 
-h2, h3, h4 {
-    font-family: 'Nexa', sans-serif;
-    font-weight: bold;
-    color: $color-negro;
+.preguntaRes{
+  font-weight: bold;
+  color:green;
 }
 
-
-/* --- ESTILOS PROFESOR (CREACIÓN) --- */
-.form-par {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 12px;
-    align-items: center;
-
-    input {
-        padding: 10px 12px;
-        border: 1px solid $color-border-gray;
-        border-radius: 6px;
-        flex-grow: 1;
-        font-family: 'Nexa', sans-serif;
-    }
-
-    .btn-quitar {
-        background: $color-error;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        font-weight: bold;
-        line-height: 1;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.input-ejemplo{
+  font-size: 0.9em;
+  font-style: italic;
+  color: rgb(46, 44, 44);
 }
-
-.btn-agregar, .btn-guardar {
-    padding: 10px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    color: white;
-}
-
-.btn-agregar {
-    background: $color-primary-blue;
-    &:hover { background: darken($color-primary-blue, 10%); }
-}
-
-.btn-guardar {
-    background: $color-primary-green;
-    &:hover { background: darken($color-primary-green, 10%); }
+.form-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin: 0 auto 20px auto; /* ← Centrado horizontal + margen inferior */
+  padding-bottom: 40px;
+  width: fit-content;
+  max-width: 90%; /* Opcional: evita que sea muy ancho en pantallas pequeñas */
 }
 
 
-/* --- ESTILOS ALUMNO (JUEGO - BASE WEB) --- */
-
-/* WEB/Desktop: Columnas lado a lado */
-.columnas-juego {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+.par-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid var(--ion-color-light);
+  border-radius: 8px;
+  background-color: rgb(31, 115, 211);
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espacio entre inputs y botón */
 }
 
+/* ✅ ESTILO PARA LOS ION-ITEM */
+.item-profesor {
+  --background: white;
+  --border-color: var(--ion-color-light);
+  --color: var(--ion-color-dark);
+}
+
+/* ✅ ESTILO PARA EL CONTENEDOR DEL BOTÓN */
+.contenedor-boton-eliminar {
+  display: flex;
+  justify-content: flex-end; /* Alinea el botón a la derecha */
+  margin-top: 8px;
+}
+
+/* ✅ ESTILO PARA EL BOTÓN */
+.boton-eliminar-icono {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --background: var(--ion-color-danger);
+  --color: white;
+  --border-radius: 20px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  --min-width: 90px;
+  --min-height: 36px;
+  font-weight: bold;
+  font-size: 0.9em;
+
+  &:hover {
+    --background: var(--ion-color-danger-shade);
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    --background: var(--ion-color-danger-tint);
+    transform: scale(0.98);
+  }
+}
+
+
+.boton-agregar,
+.boton-guardar,
+.boton-reiniciar {
+  margin-top: 15px;
+}
+
+
+
+/* Contenedor principal: móvil → columna, desktop → fila */
+.contenedor-doble-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* En desktop: mostrar como fila (lado a lado) */
+@media (min-width: 992px) {
+  .contenedor-doble-columna {
+    flex-direction: row;
+  }
+
+  /* Asegurar que ambas columnas tengan el mismo tamaño */
+  .columna-respuestas,
+  .columna-preguntas {
+    flex: 1;
+  }
+}
+
+/* Clases específicas para controlar el orden */
+.columna-respuestas {
+  order: 1; /* Primero en móvil */
+}
+
+.columna-preguntas {
+  order: 2; /* Segundo en móvil */
+}
+
+/* Estilo común para ambas columnas */
 .columna {
-    width: 45%; /* Ancho en desktop */
-
-    h4 {
-        color: $color-primary-blue;
-        margin-bottom: 20px;
-        padding-bottom: 5px;
-        border-bottom: 2px solid $color-light-gray;
-    }
-
-    .item-par {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid $color-border-gray;
-        border-radius: 8px;
-        background-color: $color-light-gray;
-        font-weight: normal;
-    }
-}
-.columna-b .item-par {
-    justify-content: flex-start; /* Alinea los ítems de la columna B a la izquierda */
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  height: fit-content;
 }
 
-.punto-conexion {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: $color-primary-blue;
-    cursor: pointer;
-    margin: 0 15px;
-    transition: background-color 0.2s, box-shadow 0.2s;
+.item-pregunta {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--ion-color-light-tint);
+}
 
-    &:hover {
-        background-color: darken($color-primary-blue, 10%);
-    }
+.pregunta-enunciado {
+  font-weight: 500;
+  margin-bottom: 10px;
+    color: black;
 
-    &.seleccionado {
-        background-color: #ffc107;
-        box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.5);
-    }
+}
+
+.texto-vacio,
+.texto-vacio-lista {
+  color: var(--ion-color-medium);
+  font-style: italic;
+  text-align: center;
+  color: white;
 }
 
 
-/* --- ESTILOS SVG Y LÍNEAS --- */
-.canvas-flechas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 10;
+/* Estilos para las zonas de soltar (slots) */
+.drop-slot {
+  min-height: 50px;
+  background-color: rgb(52, 211, 52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor: pointer;
 }
 
-.linea-conexion {
-    stroke: $color-primary-blue;
-    stroke-width: 3;
-    transition: stroke 0.3s;
-
-    &.correcta {
-        stroke: $color-success;
-    }
-    &.incorrecta {
-        stroke: $color-error;
-        stroke-dasharray: 5 5;
-    }
+.slot-empty {
+  border: 2px dashed var(--ion-color-medium);
+  background-color: #57c93b;
 }
 
-.acciones button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    background: $color-primary-green;
-    color: white;
-    display: block;
-    width: 100%;
+.slot-correct {
+  border: 2px solid var(--ion-color-success);
+  background-color: var(--ion-color-success-tint);
 }
 
+.slot-incorrect {
+  border: 2px solid var(--ion-color-danger);
+  background-color: var(--ion-color-danger-tint);
+}
 
-/* ----------------------------------- */
-/* 2. RESPONSIVE DESIGN (MOBILE) */
-/* ----------------------------------- */
+/* Estilos para la lista de respuestas disponibles */
+.answers-list {
+  min-height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid var(--ion-color-medium-tint);
+}
 
-@media (max-width: $breakpoint-mobile) {
+/* Estilos comunes para los chips de respuesta */
+.answer-chip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  background-color: var(--ion-color-primary); /*  Fondo azul por defecto */
+  color: white;
+}
 
-    .unir-flechas-container {
-        padding: 15px;
-    }
+/* Colores de los chips según el estado */
+.chip-source {
+  background-color: var(--ion-color-primary);
+  color: white;
+}
 
-    /* Vista Profesor: Inputs apilados */
-    .form-par {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        position: relative; /* Para posicionar el botón quitar */
+.chip-correct {
+  background-color: var(--ion-color-success);
+  color: white;
+}
 
-        .btn-quitar {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    }
+.chip-incorrect {
+  background-color: var(--ion-color-danger);
+  color: white;
+}
 
-    /* Vista Alumno: Columnas apiladas verticalmente */
-    .columnas-juego {
-        flex-direction: column;
-        gap: 20px;
-    }
+/* Estilos de CDK drag and drop para la visualización */
+.cdk-drag-placeholder {
+  opacity: 0.5;
+  background: var(--ion-color-step-150);
+  border: 2px dashed var(--ion-color-primary-shade);
+  border-radius: 20px;
+}
 
-    .columna {
-        width: 100%; /* Ocupa todo el ancho */
-    }
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  color: rgb(52, 211, 52);
 
-    /* Redistribuir los puntos para que la columna A y B se vean uniformes */
-    /* Columna A: Texto (izq) - Punto (der) */
-    .columna-a .item-par {
-        justify-content: space-between;
+}
 
-        .punto-conexion {
-            order: 2;
-        }
-        span {
-            order: 1;
-        }
-    }
+.contenedorCartelFinal{
+  text-align: center;
+ color:  rgb(52, 211, 52);
 
-    /* Columna B: Punto (izq) - Texto (der) */
-    .columna-b .item-par {
-        justify-content: space-between; /* Usar space-between para centrar los puntos */
+}
 
-        .punto-conexion {
-            order: 1;
-        }
-        span {
-            order: 2;
-            flex-grow: 1; /* Permitir que el texto ocupe espacio restante */
-        }
-    }
+.boton-enviar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.boton-enviar {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --border-radius: 24px;
+  font-weight: bold;
+  font-size: 1em;
+  min-width: 180px;
+
+  &:hover {
+    --background: var(--ion-color-primary-shade);
+  }
+
+  &:active {
+    --background: var(--ion-color-primary-tint);
+    transform: scale(0.98);
+  }
 }

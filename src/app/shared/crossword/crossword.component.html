@@ -1,79 +1,183 @@
-<div class="unir-flechas-container">
-    <h2>Actividad Unir Con Flechas</h2>
+<!-- VISTA PROFESOR -->
+@if (!esAlumno()) {
+  <ion-content class="ion-padding" style="--background: #f4f5f8;" [fullscreen]="true">
+    <div class="activity-container-profesor">
+      <h1 class="titulo">Actividad de Unir </h1>
 
-    <div *ngIf="!esAlumno" class="vista-profesor">
-        <h3>Vista Profesor: Actividad Unir con Flechas</h3>
+      <div class="form-section">
+        <h3 class="subtitulo">Preguntas y Respuestas</h3>
+        <h2 class="instruciones"> Coloque las preguntas y respuestas para la actividad </h2>
 
-        <div *ngFor="let par of paresEdicion; let i = index" class="form-par">
-            <input [(ngModel)]="par.itemA" placeholder="Ítem A (Ej: Hola)">
-            <input [(ngModel)]="par.itemB" placeholder="Ítem B (Ej: Hello)">
+        @for (par of paresEdicion(); track par.id; let i = $index) {
+          <div class="par-item">
+            <ion-item class="item-profesor">
+              <ion-label position="stacked" class="preguntaRes">Pregunta {{ i + 1 }}</ion-label>
+              <ion-input
+                [(ngModel)]="par.enunciado"
+                placeholder="Ej: I like ____ on the beach."
+                required
+                class ="input-ejemplo"
+              ></ion-input>
+            </ion-item>
 
-            <button (click)="paresEdicion.splice(i, 1)" class="btn-quitar" *ngIf="paresEdicion.length > 1">➖</button>
-        </div>
-
-        <button (click)="agregarPar()" class="btn-agregar">➕ Agregar Nuevo Par</button>
-
-        <hr>
-        <button (click)="guardarActividad()" class="btn-guardar">💾 Guardar Actividad</button>
-
-        <div *ngIf="actividadGuardada.length > 0">
-            <hr>
-            <h4>Opciones de Prueba</h4>
-            <button (click)="rolUsuario = 'alumno'; esAlumno = true; cargarJuego()">
-                ▶️ Probar como Alumno
-            </button>
-        </div>
-    </div>
-
-    <div *ngIf="esAlumno" class="vista-alumno">
-        <h3>Vista Alumno: Unir con flechas</h3>
-
-        <div class="columnas-juego">
-            <div class="columna columna-a">
-                <h4>Columna A</h4>
-                <div *ngFor="let item of elementosColumnaA" class="item-par">
-                    <span>{{ item.texto }}</span>
-                    <div
-                        [id]="'punto-' + item.id"
-                        class="punto-conexion a"
-                        [class.seleccionado]="puntoSeleccionadoId === item.id"
-                        (click)="manejarClickPunto(item.id, 'A')">
-                    </div>
-                </div>
+            <ion-item class="item-profesor">
+              <ion-label position="stacked" class="preguntaRes ">Respuesta Correcta</ion-label>
+              <ion-input
+                [(ngModel)]="par.respuestaCorrecta"
+                placeholder="Ej: RUNNING"
+                required
+                class ="input-ejemplo"
+              ></ion-input>
+            </ion-item>
+<!--
+            // Botón Eliminar Par -->
+            <div class="contenedor-boton-eliminar">
+              <ion-button
+                fill="solid"
+                color="danger"
+                shape="round"
+                size="small"
+                (click)="eliminarPar(i)"
+                [disabled]="paresEdicion().length <= 1"
+                class="boton-eliminar-icono"
+              >
+                <ion-label style="color:white; font-size:medium; font-weight: bold;">Eliminar</ion-label>
+                <ion-icon name="trash-outline" style="color: #f4f5f8;"></ion-icon>
+              </ion-button>
             </div>
+          </div>
+        }
 
-            <div class="columna columna-b">
-                <h4>Columna B</h4>
-                <div *ngFor="let item of elementosColumnaB" class="item-par">
-                    <div
-                        [id]="'punto-' + item.id"
-                        class="punto-conexion b"
-                        (click)="manejarClickPunto(item.id, 'B')">
-                    </div>
-                    <span>{{ item.texto }}</span>
-                </div>
-            </div>
-        </div>
+        <ion-button (click)="agregarPar()" expand="block" fill="outline" class="boton-agregar">
+          + Agregar Par
+        </ion-button>
 
-        <div class="acciones">
-             <button *ngIf="!juegoFinalizado" (click)="enviarRespuestas()">Enviar Respuestas</button>
-             <div *ngIf="juegoFinalizado" class="feedback-final">
-                 <p>¡Actividad finalizada! Revisa tus resultados.</p>
-             </div>
-        </div>
+        <ion-button
+          expand="block"
+          color= "primary"
+          (click)="guardarEjercicio(paresEdicion())"
+          class="boton-guardar"
+        >
+          <p style="font-weight: bold; color: white;">💾 Guardar Actividad</p>
+        </ion-button>
+      </div>
     </div>
+  </ion-content>
+}
 
-    <svg class="canvas-flechas">
-        <ng-container *ngFor="let conexion of conexionesAlumno">
-            <svg:line *ngIf="getCoordenadasFlecha(conexion) as coords"
-                [attr.x1]="coords.x1"
-                [attr.y1]="coords.y1"
-                [attr.x2]="coords.x2"
-                [attr.y2]="coords.y2"
-                [class.correcta]="conexion.esCorrecta === true"
-                [class.incorrecta]="conexion.esCorrecta === false"
-                class="linea-conexion"
-            />
-        </ng-container>
-    </svg>
-</div>
+<!-- VISTA ALUMNO -->
+@if (esAlumno()) {
+  <ion-content [fullscreen]="true" class="ion-padding" style="--background: #f4f5f8;">
+    <div class="activity-container-alumno">
+      <h1 class="titulo">Actividad de Unir</h1>
+      <h2 class="instruciones" style="margin-left: 15px;">Arrastra las respuestas a los bloques de las preguntas</h2>
+
+      <!-- Contenedor principal -->
+      <div class="contenedor-doble-columna">
+
+        <!-- Columna de respuestas (disponibles) -->
+        <div class="columna columna-respuestas">
+          <h2 class="subtitulo">Respuestas</h2>
+
+          <div
+            id="lista-respuestas"
+            cdkDropList
+            [cdkDropListData]="respuestasDisponibles()"
+            [cdkDropListConnectedTo]="dropListIds()"
+            (cdkDropListDropped)="soltarRespuesta($event)"
+            class="answers-list"
+          >
+            @for (respuesta of respuestasDisponibles(); track respuesta.id) {
+              <div
+                cdkDrag
+                [cdkDragData]="respuesta"
+                class="answer-chip chip-source"
+              >
+                {{ respuesta.texto }}
+                <div *cdkDragPlaceholder class="drag-placeholder"></div>
+              </div>
+            }
+
+            @if (respuestasDisponibles().length === 0) {
+              <p class="texto-vacio-lista">
+                Todas las fichas están en las preguntas.
+              </p>
+            }
+          </div>
+        </div>
+
+        <!-- Columna de preguntas (destino) -->
+        <div class="columna columna-preguntas">
+          <h2 class="subtitulo">Preguntas</h2>
+
+          @for (pregunta of preguntas(); track pregunta.id; let i = $index) {
+            <div class="item-pregunta">
+              <p class="pregunta-enunciado">
+                {{ i + 1 }}. {{ pregunta.enunciado }}
+              </p>
+
+              <div
+                [id]="'destino-pregunta-' + i"
+                cdkDropList
+                [cdkDropListData]="pregunta"
+                [cdkDropListConnectedTo]="dropListIds()"
+                (cdkDropListDropped)="soltarRespuesta($event)"
+                class="drop-slot"
+                [ngClass]="{
+                  'slot-empty': !pregunta.respuestaAsignada,
+                  'slot-correct': pregunta.estado === 'correct',
+                  'slot-incorrect': pregunta.estado === 'incorrect'
+                }"
+              >
+                @if (pregunta.respuestaAsignada) {
+                  <div
+                    cdkDrag
+                    [cdkDragData]="pregunta.respuestaAsignada"
+                    class="answer-chip"
+                    [ngClass]="{
+                      'chip-correct': pregunta.estado === 'correct',
+                      'chip-incorrect': pregunta.estado === 'incorrect',
+                      'chip-source': pregunta.estado !== 'correct' && pregunta.estado !== 'incorrect'
+                    }"
+                  >
+                    {{ pregunta.respuestaAsignada.texto }}
+                    <div *cdkDragPlaceholder class="drag-placeholder"></div>
+                  </div>
+                } @else {
+                  <span class="texto-vacio">Arrastra aquí</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+      </div>
+
+      <!-- ✅ CARTTEL FINAL MOVIDO ABAJO -->
+      @if (ejercicioCompletado()) {
+        <ion-card class="ion-padding mb-6 text-center" color="success">
+          <ion-card-header class="contenedorCartelFinal">
+            <ion-card-title>¡Actividad Finalizada!</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="font-weight: bold;">
+            Has completado el ejercicio. ¡Haz clic en "Enviar Respuestas" para que sea correjido!
+          </ion-card-content>
+        </ion-card>
+      }
+
+      <!-- Botón Enviar Respuestas al backend -->
+      @if (ejercicioCompletado()) {
+
+        <div class="boton-enviar-container">
+          <ion-button
+           color="primary"
+          (click)="enviarRespuestasAlBackend()"
+           class="boton-enviar"
+        >
+          <p style="font-weight: bold; color: white;">Enviar Respuestas</p>
+          </ion-button>
+        </div>
+      }
+    </div>
+  </ion-content>
+}
