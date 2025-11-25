@@ -40,7 +40,6 @@ import { FormsModule } from '@angular/forms';
     CrosswordComponent,
     IonicModule,
     FormsModule,
-    CrosswordComponent,
   ],
 })
 export class SharedModule {}
