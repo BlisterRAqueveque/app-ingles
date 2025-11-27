@@ -10,8 +10,8 @@ import { SequenceExerciseComponent } from './sequence-exercise/sequence-exercise
 import { SpeakingExerciseComponent } from './speaking-exercise/speaking-exercise.component';
 import { WordGameComponent } from './word-game/word-game.component';
 import { CrosswordComponent } from './crossword/crossword.component';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 // Módulo necesario para las directivas del CDK (cdkDrag, cdkDropList)
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -31,6 +31,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   ],
   imports: [CommonModule, IonicModule, FormsModule, DragDropModule],
   exports: [
+    FormsModule,
+    DragDropModule,
+    IonicModule,
+    /* Ejercicios */
     BingoComponent,
     DrawWriteComponent,
     FillInTheBlanksComponent,
@@ -47,4 +51,4 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CrosswordComponent,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }
