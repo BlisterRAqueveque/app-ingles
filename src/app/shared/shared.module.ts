@@ -12,7 +12,6 @@ import { WordGameComponent } from './word-game/word-game.component';
 import { CrosswordComponent } from './crossword/crossword.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 
 // Módulo necesario para las directivas del CDK (cdkDrag, cdkDropList)
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -30,7 +29,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     WordGameComponent,
     CrosswordComponent,
   ],
-  imports: [CommonModule, FormsModule, DragDropModule, IonicModule],
+  imports: [CommonModule, IonicModule, FormsModule, DragDropModule],
   exports: [
     BingoComponent,
     DrawWriteComponent,
@@ -42,7 +41,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     SpeakingExerciseComponent,
     WordGameComponent,
     CrosswordComponent,
-    IonicModule,
     FormsModule,
     IonicModule,
     DragDropModule,

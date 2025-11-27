@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FillInTheBlanksRoutingModule } from './fill-in-the-blanks-routing.module';
 import { CompletarTextoComponent } from './completar-texto/completar-texto.component';
 import { SharedModule } from '@/app/shared/shared.module';
-
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { SharedModule } from '@/app/shared/shared.module';
   imports: [
     CommonModule,
     FillInTheBlanksRoutingModule,
-    SharedModule
+    SharedModule,
+    IonicModule
   ]
 })
 export class FillInTheBlanksModule { }
