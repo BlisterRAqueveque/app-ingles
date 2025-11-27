@@ -8,8 +8,10 @@ import { Component, inject, Input, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  @Input() logoUrl = '/assets/imgs/logo.png';
+  @Input() logoUrl = '/assets/img/logoRN-Min-Educacion-y-der-humanos.png';
   private readonly authService = inject(AuthService);
+
+  showPassword = false
 
   password = '';
 

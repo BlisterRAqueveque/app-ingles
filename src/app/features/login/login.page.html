@@ -1,16 +1,13 @@
 <ion-content class="login-page" fullscreen>
   <div class="login-wrapper">
     <ion-card class="login-card">
-      <div class="logo-wrap">
-        <img
-          [src]="logoUrl"
-          alt="Logo"
-          class="logo"
-          *ngIf="logoUrl; else placeholder"
-        />
-        <ng-template #placeholder>
-          <div class="logo-placeholder">LOGO</div>
-        </ng-template>
+      <div class="logo-wrap flex justify-center items-center">
+        @if (logoUrl) {
+        <img [src]="logoUrl" alt="Logo" />
+        } @else {
+
+        <div class="logo-placeholder">LOGO</div>
+        }
       </div>
 
       <ion-card-content>
@@ -22,14 +19,19 @@
             <input id="username" pInputText type="text" placeholder="Usuario" />
           </div>
 
-          <div class="p-field">
+          <div class="p-field relative">
             <label for="password" class="sr-only">Contraseña</label>
             <input
               id="password"
               pInputText
-              type="password"
+              [type]="showPassword ? 'text' : 'password'"
               placeholder="Contraseña"
             />
+            <ion-icon
+              (click)="showPassword = !showPassword"
+              [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
+              class="absolute right-2 text-2xl text-green-900 top-1/2 -translate-y-1/2"
+            ></ion-icon>
           </div>
 
           <div class="actions">
@@ -48,7 +50,7 @@
       </ion-card-content>
 
       <ion-footer class="footer-note">
-        <small>App demo • Contreras Hnos</small>
+        <small>App demo • Ministerio de educación</small>
       </ion-footer>
     </ion-card>
   </div>
