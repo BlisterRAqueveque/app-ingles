@@ -1,5 +1,5 @@
 import { AuthService } from '@/app/core';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 
 @Component({
   standalone: false,
@@ -8,6 +8,7 @@ import { Component, inject, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @Input() logoUrl = '/assets/imgs/logo.png';
   private readonly authService = inject(AuthService);
 
   password = '';

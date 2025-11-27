@@ -1,1 +1,55 @@
-<h1>Login</h1>
+<ion-content class="login-page" fullscreen>
+  <div class="login-wrapper">
+    <ion-card class="login-card">
+      <div class="logo-wrap">
+        <img
+          [src]="logoUrl"
+          alt="Logo"
+          class="logo"
+          *ngIf="logoUrl; else placeholder"
+        />
+        <ng-template #placeholder>
+          <div class="logo-placeholder">LOGO</div>
+        </ng-template>
+      </div>
+
+      <ion-card-content>
+        <h2 class="title">Bienvenido</h2>
+
+        <form class="login-form" (submit)="$event.preventDefault()">
+          <div class="p-field">
+            <label for="username" class="sr-only">Usuario</label>
+            <input id="username" pInputText type="text" placeholder="Usuario" />
+          </div>
+
+          <div class="p-field">
+            <label for="password" class="sr-only">Contraseña</label>
+            <input
+              id="password"
+              pInputText
+              type="password"
+              placeholder="Contraseña"
+            />
+          </div>
+
+          <div class="actions">
+            <button
+              pButton
+              type="submit"
+              label="Ingresar"
+              class="full"
+            ></button>
+          </div>
+
+          <div class="links">
+            <a class="small-link">¿Olvidaste tu contraseña?</a>
+          </div>
+        </form>
+      </ion-card-content>
+
+      <ion-footer class="footer-note">
+        <small>App demo • Contreras Hnos</small>
+      </ion-footer>
+    </ion-card>
+  </div>
+</ion-content>

@@ -24,12 +24,9 @@
     "@angular/router": "^19.2.15",
     "@capacitor/core": "^7.4.4",
     "@capacitor/preferences": "^7.0.2",
-    "@ionic/angular": "^8.0.0",
-    "@primeng/themes": "^20.1.2",
-    "@primeuix/themes": "^1.2.3",
+    "@ionic/angular": "^8.7.11",
     "ionicons": "^7.0.0",
     "ngx-cookie-service": "^19.1.2",
-    "primeng": "^20.1.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
