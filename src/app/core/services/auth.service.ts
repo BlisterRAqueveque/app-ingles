@@ -28,7 +28,7 @@ export interface CustomResponse<T> {
 }
 
 export interface LoginResponse {
-  access_token: string;
+  token: string;
   user: User;
 }
 
@@ -53,20 +53,17 @@ export class AuthService {
   login(credenciales: Login, rememberMe: boolean, param?: Params) {
     const dir = `${this.url}login`;
     const isWeb = Capacitor.getPlatform() === 'web';
-    return this.http
-      .post<CustomResponse<LoginResponse>>(dir, credenciales)
-      .pipe(
-        catchError((err) => handleError(err)),
-        map((data) => data.result),
-        tap((data) => {
-          console.log(data);
-          if (rememberMe && !isWeb) this.saveUserFMC(data.user.id);
-          this.setExpireDate(rememberMe);
-          this.saveToken(data.access_token);
-          this.pushNewUser(data.user);
-          this.redirect(param);
-        })
-      );
+    return this.http.post<LoginResponse>(dir, credenciales).pipe(
+      catchError((err) => handleError(err)),
+      tap((data) => {
+        console.log(data);
+        if (rememberMe && !isWeb) this.saveUserFMC(data.user.id);
+        this.setExpireDate(rememberMe);
+        this.saveToken(data.token);
+        this.pushNewUser(data.user);
+        this.redirect(param);
+      })
+    );
   }
   private setExpireDate(rememberMe: boolean) {
     if (rememberMe) {

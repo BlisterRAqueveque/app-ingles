@@ -16,6 +16,11 @@ const routes: Routes = [
       import('./features/login/login.module').then((m) => m.LoginPageModule),
   },
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomePageModule),
+  },
+  {
     path: 'completar-texto',
     loadChildren: () =>
       import(
@@ -28,13 +33,18 @@ const routes: Routes = [
     component: SpeakingExerciseComponent,
   },
   {
-    path: 'flashcards-exercise', 
-    component: MatchExerciseComponent, 
+    path: 'flashcards-exercise',
+    component: MatchExerciseComponent,
   },
   {
     path: 'crossword',
-    component: CrosswordComponent
-  }
+    component: CrosswordComponent,
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomePageModule),
+  },
 ];
 
 @NgModule({

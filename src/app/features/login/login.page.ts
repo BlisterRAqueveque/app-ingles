@@ -1,20 +1,19 @@
 import { AuthService } from '@/app/core';
 import { Component, inject, Input } from '@angular/core';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   standalone: false,
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService],
 })
 export class LoginPage {
   @Input() logoUrl = '/assets/img/logoRN-Min-Educacion-y-der-humanos.png';
   private readonly authService = inject(AuthService);
 
   private readonly confirmationService = inject(ConfirmationService);
-  private readonly messageService = inject(MessageService);
 
   showPassword = false;
 
@@ -26,7 +25,18 @@ export class LoginPage {
     this.authService.login(credenciales, true).subscribe({
       error: (err) => {
         console.error(err);
-        this.showError();
+        const status = err.error.statusCode;
+        switch (status) {
+          case 400:
+            this.showError();
+            break;
+          case 401:
+            this.showError('Contraseña o usuario incorrectos.');
+            break;
+          default:
+            this.showError();
+            break;
+        }
       },
     });
   }
