@@ -17,9 +17,7 @@
               "base": "www"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -34,7 +32,11 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.css", "src/theme/variables.css"],
+            "styles": [
+              "src/global.css",
+              "src/theme/variables.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
             "scripts": [],
             "browser": "src/main.ts"
           },
@@ -126,19 +128,14 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": false
   },
   "schematics": {

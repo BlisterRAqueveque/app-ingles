@@ -1,24 +1,49 @@
 import { AuthService } from '@/app/core';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   standalone: false,
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  providers: [ConfirmationService, MessageService],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   @Input() logoUrl = '/assets/img/logoRN-Min-Educacion-y-der-humanos.png';
   private readonly authService = inject(AuthService);
 
-  showPassword = false
+  private readonly confirmationService = inject(ConfirmationService);
+  private readonly messageService = inject(MessageService);
 
+  showPassword = false;
+
+  username = '';
   password = '';
 
-  async ngOnInit() {}
-
   login() {
-    //TODO Hacer la función de login
-    throw new Error('Method not implemented.');
+    const credenciales = { username: this.username, password: this.password };
+    this.authService.login(credenciales, true).subscribe({
+      error: (err) => {
+        console.error(err);
+        this.showError();
+      },
+    });
+  }
+
+  showError(message = 'Error desconocido') {
+    this.confirmationService.confirm({
+      target: event?.target as EventTarget,
+      message,
+      header: 'Error de acceso',
+      closable: false,
+      closeOnEscape: false,
+      icon: 'pi pi-exclamation-triangle',
+      rejectVisible: false,
+      acceptButtonProps: {
+        label: 'Aceptar',
+      },
+      accept: () => {},
+    });
   }
 }

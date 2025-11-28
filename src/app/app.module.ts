@@ -23,7 +23,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     IonicModule.forRoot({ mode: 'ios', hardwareBackButton: true }),
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -38,4 +38,4 @@ import { SharedModule } from './shared/shared.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

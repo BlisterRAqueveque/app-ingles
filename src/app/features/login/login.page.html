@@ -5,7 +5,6 @@
         @if (logoUrl) {
         <img [src]="logoUrl" alt="Logo" />
         } @else {
-
         <div class="logo-placeholder">LOGO</div>
         }
       </div>
@@ -13,40 +12,46 @@
       <ion-card-content>
         <h2 class="title">Bienvenido</h2>
 
-        <form class="login-form" (submit)="$event.preventDefault()">
-          <div class="p-field">
-            <label for="username" class="sr-only">Usuario</label>
-            <input id="username" pInputText type="text" placeholder="Usuario" />
-          </div>
+        <div class="p-field mb-4">
+          <label for="username" class="sr-only">Usuario</label>
+          <input
+            id="username"
+            pInputText
+            type="text"
+            placeholder="Usuario"
+            [(ngModel)]="username"
+          />
+        </div>
 
-          <div class="p-field relative">
-            <label for="password" class="sr-only">Contraseña</label>
-            <input
-              id="password"
-              pInputText
-              [type]="showPassword ? 'text' : 'password'"
-              placeholder="Contraseña"
-            />
-            <ion-icon
-              (click)="showPassword = !showPassword"
-              [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
-              class="absolute right-2 text-2xl text-green-900 top-1/2 -translate-y-1/2"
-            ></ion-icon>
-          </div>
+        <div class="p-field relative mb-4">
+          <label for="password" class="sr-only">Contraseña</label>
+          <input
+            id="password"
+            pInputText
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Contraseña"
+            [(ngModel)]="password"
+          />
+          <ion-icon
+            (click)="showPassword = !showPassword"
+            [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
+            class="absolute right-2 text-2xl text-green-900 top-1/2 -translate-y-1/2"
+          ></ion-icon>
+        </div>
 
-          <div class="actions">
-            <button
-              pButton
-              type="submit"
-              label="Ingresar"
-              class="full"
-            ></button>
-          </div>
+        <div class="actions">
+          <button
+            pButton
+            type="submit"
+            label="Ingresar"
+            class="full"
+            (click)="login()"
+          ></button>
+        </div>
 
-          <div class="links">
-            <a class="small-link">¿Olvidaste tu contraseña?</a>
-          </div>
-        </form>
+        <div class="links">
+          <a class="small-link">¿Olvidaste tu contraseña?</a>
+        </div>
       </ion-card-content>
 
       <ion-footer class="footer-note">
@@ -55,3 +60,5 @@
     </ion-card>
   </div>
 </ion-content>
+
+<p-confirmdialog />

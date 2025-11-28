@@ -13,12 +13,13 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+
 import { handleError } from '../tools/handle-error';
 import { TOKEN } from '../keys/token';
 import { StorageService } from './storage.service';
 import { ConnectionService } from './connection.service';
 import { UserService } from './user.service';
+import { environment } from '@/environments/environment.ci';
 
 export interface CustomResponse<T> {
   ok: boolean;
@@ -47,7 +48,7 @@ export interface User {
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
-  private readonly url = `${environment.apiUrl}auth/`;
+  private readonly url = `${environment.apiUrl}users/auth/`;
 
   login(credenciales: Login, rememberMe: boolean, param?: Params) {
     const dir = `${this.url}login`;
@@ -58,6 +59,7 @@ export class AuthService {
         catchError((err) => handleError(err)),
         map((data) => data.result),
         tap((data) => {
+          console.log(data);
           if (rememberMe && !isWeb) this.saveUserFMC(data.user.id);
           this.setExpireDate(rememberMe);
           this.saveToken(data.access_token);

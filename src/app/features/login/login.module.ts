@@ -10,6 +10,7 @@ import { LoginPage } from './login.page';
 import { SharedModule } from '@/app/shared/shared.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { ConfirmDialog } from 'primeng/confirmdialog';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ButtonModule } from 'primeng/button';
     SharedModule,
     InputTextModule,
     ButtonModule,
+    ConfirmDialog,
   ],
   declarations: [LoginPage],
 })
